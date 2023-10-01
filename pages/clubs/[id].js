@@ -46,7 +46,7 @@ const Clubs = ({ clubs, events }) => {
                               events.map((ct, i) => {
                                 if(ct._id==it._ref){
                                   return (
-                                    <div>
+                                    <div key={i}>
                                     <img className="inline-block   " src={urlFor(ct.picture[0]).url()} />
                                     </div>
                                   )
