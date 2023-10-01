@@ -3,7 +3,8 @@ import Link from "next/link";
 const Logo = () => {
   return (
     <div className="row-span-2 col-span-1">
-      <img src="iiitl.png"></img>
+      <img src="https://ik.imagekit.io/cmef8hxb6/iiitl_yBmBuoQ_O.png?updatedAt=1696141546831"></img>
+      
     </div>
   );
 };

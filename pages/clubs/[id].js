@@ -5,9 +5,9 @@ import { useRouter } from 'next/router'
 import Heading from '@/components/Heading';
 import Navbar from '@/components/Navbar';
 
-const Clubs = ({clubs,events}) => {
+const Clubs = ({ clubs, events }) => {
   const router = useRouter()
-  const id=router.query.id
+  const id = router.query.id
 
 
   const client = createClient({
@@ -19,10 +19,56 @@ const Clubs = ({clubs,events}) => {
   function urlFor(source) {
     return builder.image(source);
   }
-  console.log(events,clubs)
+  console.log(clubs,events)
   return (
     <div>
-      <Navbar/>
+      <Navbar />
+      {
+        clubs.map((item, index) => {
+          if (item._id == id) {
+            return (
+              <div className='px-20' key={index}>
+                <h1 className='text-3xl  my-6'>About {item.name}</h1>
+                <div className='grid grid-flow-row grid-cols-1 lg:grid-cols-2 gap-x-20'>
+                  <h3 >About {item.description}</h3>
+                  <img className="inline-block   " src={urlFor(item.picture[0]).url()} />
+                </div>
+
+                {
+                  <div className=''>
+                    <h1 className='text-3xl  my-6'>Events</h1>
+                    {
+                      item.clubEvents.map((it, ind) => {
+
+                        return (
+                          <div>
+                            {
+                              events.map((ct, i) => {
+                                if(ct._id==it._ref){
+                                  return (
+                                    <div>
+                                    <img className="inline-block   " src={urlFor(ct.picture[0]).url()} />
+                                    </div>
+                                  )
+                                }
+                              })
+                            }
+                          </div>
+                        )
+
+                      })
+
+                    }
+                  </div>
+                }
+
+              </div>
+            )
+          }
+        })
+      }
+
+
     </div>
   )
 }
@@ -40,7 +86,7 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
-      clubs,events
+      clubs, events
     },
   };
 }

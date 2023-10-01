@@ -25,7 +25,7 @@ const Clubs = ({clubs}) => {
         clubs.map((item,index)=>{
           return(
             <Link href={'/clubs/'+item._id}>
-            <img className="inline-block rounded-full  " src={urlFor(item.picture[0]).width(50).url()} />
+            <img className="inline-block   " src={urlFor(item.picture[0]).url()} />
             </Link>
             )
           })
