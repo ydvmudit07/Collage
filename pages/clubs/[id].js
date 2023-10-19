@@ -38,7 +38,7 @@ const Clubs = ({ clubs, events }) => {
                   <div className=''>
                     <h1 className='text-3xl  my-6'>Events</h1>
                     {
-                      item.clubEvents.map((it, ind) => {
+                      item.clubEvents?.map((it, ind) => {
 
                         return (
                           <div>

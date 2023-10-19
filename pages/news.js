@@ -14,7 +14,7 @@ const news = ({news,annoucements}) => {
       function urlFor(source) {
         return builder.image(source);
       }
-  console.log(news)
+ 
   return (
     <div>
       <Navbar/>

@@ -47,7 +47,7 @@ const Navigation = () => {
       <Link href="/people">People</Link>
       </li>
       <li className="border border-bluel hover:bg-bluel hover:text-white duration-200 py-2 w-[13%] text-center">
-      <Link href="/courses">Courses</Link>
+      <Link href="/course">Courses</Link>
       </li>
     </ul>
   );
