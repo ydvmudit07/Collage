@@ -2,8 +2,9 @@ import React from 'react'
 import { createClient } from "next-sanity";
 import imageUrlBuilder from "@sanity/image-url";
 import { useRouter } from 'next/router'
-import Heading from '@/components/Heading';
 import Navbar from '@/components/Navbar';
+import Link from 'next/link';
+import Zoom from 'react-reveal/Zoom';
 
 const Clubs = ({ clubs, events }) => {
   const router = useRouter()
@@ -23,17 +24,21 @@ const Clubs = ({ clubs, events }) => {
   return (
     <div>
       <Navbar />
+     
       {
         clubs.map((item, index) => {
           if (item._id == id) {
             return (
+              
               <div className='px-20' key={index}>
-                <h1 className='text-3xl  my-6'>About {item.name}</h1>
-                <div className='grid grid-flow-row grid-cols-1 lg:grid-cols-2 gap-x-20'>
-                  <h3 >About {item.description}</h3>
-                  <img className="inline-block   " src={urlFor(item.picture[0]).url()} />
-                </div>
-
+               <Zoom>
+               <h1 className='text-3xl  my-6'>About {item.name}</h1>
+               <div className='grid grid-flow-row grid-cols-1 lg:grid-cols-2 gap-x-20'>
+               <h3 >About {item.description}</h3>
+               <img className="inline-block   " src={urlFor(item.picture[0]).url()} />
+               </div>
+               </Zoom>
+                <Zoom>
                 {
                   <div className=''>
                     <h1 className='text-3xl  my-6'>Events</h1>
@@ -46,21 +51,24 @@ const Clubs = ({ clubs, events }) => {
                               events.map((ct, i) => {
                                 if(ct._id==it._ref){
                                   return (
-                                    <div key={i}>
+                                    <div key={i} className="cursor-pointer">
+                                    <Link href={'/collegeevents/' +ct._id}>
                                     <img className="inline-block   " src={urlFor(ct.picture[0]).url()} />
+                                    </Link>
                                     </div>
                                   )
                                 }
                               })
                             }
-                          </div>
-                        )
-
-                      })
-
-                    }
-                  </div>
-                }
+                            </div>
+                            )
+                            
+                          })
+                          
+                        }
+                        </div>
+                      }
+                      </Zoom>
 
               </div>
             )

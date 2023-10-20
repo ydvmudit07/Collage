@@ -3,12 +3,14 @@ import React from 'react'
 import { createClient } from "next-sanity";
 import imageUrlBuilder from "@sanity/image-url";
 import Link from 'next/link';
+import Zoom from 'react-reveal/Zoom';
+
 const Clubs = ({clubs}) => {
 
     console.log(clubs)
 
     const client = createClient({
-        projectId: "msx6zvjg",
+        projectId: process.env.NEXT_PUBLIC_CLUB_ID,
         dataset: "production",
   
       });
@@ -19,8 +21,9 @@ const Clubs = ({clubs}) => {
   return (
     <div >
     <Navbar/>
-      <h1 className='my-4'>Life at IIIT - Lucknow</h1>
+      <h1 className='my-4 text-2xl  px-10'>Life at IIIT - Lucknow</h1>
       <div className='grid grid-flow-row grid-cols-3  px-20 py-10'> 
+      <Zoom>
       {
         clubs.map((item,index)=>{
           return(
@@ -30,6 +33,7 @@ const Clubs = ({clubs}) => {
             )
           })
         }
+      </Zoom>
     </div>
     </div>
   )
