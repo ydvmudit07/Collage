@@ -28,12 +28,41 @@ const About=()=>{
       </div>
     )
 }
+
+// work starts here
+
+const InfoCard = ({ title, content }) => {
+  return (
+    <div className="relative m-10 max-md:m-5 scrollAnim">
+      <div className='bg-gray-300 z-[-1] py-3'>
+        <div className="flex flex-row justify-center space-x-10">
+          <div className="w-[28%] h-[60vh] max-lg:w-[30%] max-sm:w-[30%] max-md:text-xl flex flex-col text-center text-2xl font-normal bg-bluel text-white p-10 gap-10 transform hover:scale-110 transition-transform py-0 px-0 hover:border border-bluedark hover:shadow-lg">
+            <p className='bg-white text-bluedark font-bold h-12 py-2'>{title}</p>
+            <p className=''>{content}</p>
+          </div>
+          <div className="w-[28%] h-[60vh] max-lg:w-[30%] max-sm:w-[30%] max-md:text-xl flex flex-col text-center text-2xl font-normal bg-bluel text-white p-10 gap-10 transform hover:scale-110 transition-transform py-0 px-0 hover:border border-bluedark hover:shadow-lg">
+            <p className='bg-white text-bluedark font-bold h-12 py-2'>{title}</p>
+            <p className=''>{content}</p>
+          </div>
+          <div className="w-[28%] h-[60vh] max-lg:w-[30%] max-sm:w-[30%] max-md:text-xl flex flex-col text-center text-2xl font-normal bg-bluel text-white p-10 gap-10 transform hover:scale-110 transition-transform py-0 px-0 hover:border border-bluedark hover:shadow-lg">
+            <p className='bg-white text-bluedark font-bold h-12 py-2'>{title}</p>
+            <p className=''>{content}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// work ends here
+
 export default function Home() {
   return (
     <div>
     <Navbar/>
     <Content/>
     <About/>
+    <InfoCard/>
     </div>
     )
 }
