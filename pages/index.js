@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import React, { useState } from 'react';
 
 import Navbar from '@/components/Navbar'
 
@@ -34,7 +35,7 @@ const About=()=>{
 const InfoCard = ({ title, content }) => {
   return (
     <div className="relative m-10 max-md:m-5 scrollAnim">
-      <div className='bg-gray-300 z-[-1] py-3'>
+      <div className='bg-gray-200 z-[-1] py-12'>
         <div className="flex flex-row justify-center space-x-10">
           <div className="w-[28%] h-[60vh] max-lg:w-[30%] max-sm:w-[30%] max-md:text-xl flex flex-col text-center text-2xl font-normal bg-bluel text-white p-10 gap-10 transform hover:scale-110 transition-transform py-0 px-0 hover:border border-bluedark hover:shadow-lg">
             <p className='bg-white text-bluedark font-bold h-12 py-2'>{title}</p>
@@ -56,12 +57,67 @@ const InfoCard = ({ title, content }) => {
 
 // work ends here
 
+// work starts here
+
+const InfoBoard = ({ title, content }) => {
+  const [selectedContent, setSelectedContent] = useState(null);
+
+  const handleButtonClick = (content) => {
+    setSelectedContent(content);
+  };
+
+  return (
+    <div className="relative m-10 max-md:m-5 scrollAnim">
+      <div className="bg-white z-[-1] py-3">
+        <div className="flex flex-row justify-center space-x-10">
+          <div className="w-[28%] h-[60vh] max-lg:w-[30%] max-sm:w-[30%] max-md:text-xl flex flex-col text-center text-2xl font-normal bg-bluel text-white p-10 gap-10 transform hover:scale-110 transition-transform py-0 px-0 hover:border border-bluedark hover:shadow-lg">
+            <p className="bg-gray-200 text-bluedark font-bold h-14 py-2">{title}</p>
+            <p>{content}</p>
+          </div>
+          <div className="w-[59%] h-[60vh] max-lg:w-[30%] max-sm:w-[30%] max-md:text-xl flex flex-col text-center text-2xl font-normal bg-bluel text-white p-10 gap-10 py-0 px-0">
+            <div className="flex justify-between">
+              <button
+                className="bg-gray-200 text-bluedark font-bold h-12 w-[25%] py-2 mx-2 my-2"
+                onClick={() => handleButtonClick("-")}
+              >
+                -
+              </button>
+              <button
+                className="bg-gray-200 text-bluedark font-bold h-12 w-[25%] py-2 mx-2 my-2"
+                onClick={() => handleButtonClick("--")}
+              >
+                --
+              </button>
+              <button
+                className="bg-gray-200 text-bluedark font-bold h-12 w-[25%] py-2 mx-2 my-2"
+                onClick={() => handleButtonClick("---")}
+              >
+                ---
+              </button>
+              <button
+                className="bg-gray-200 text-bluedark font-bold h-12 w-[25%] py-2 mx-2 my-2"
+                onClick={() => handleButtonClick("----")}
+              >
+                ----
+              </button>
+            </div>
+            {selectedContent && <p>{selectedContent}</p>}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// work ends here
+
 export default function Home() {
   return (
     <div>
     <Navbar/>
     <Content/>
     <About/>
+    <InfoBoard/>
     <InfoCard/>
     </div>
     )
